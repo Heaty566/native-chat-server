@@ -17,5 +17,3 @@ export class User {
     @Column({ default: new Date() })
     createDate: Date;
 }
-
-export default User;

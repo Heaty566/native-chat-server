@@ -1,9 +1,9 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { User } from './user.entity';
+import { Chat } from './chat.entity';
 
-@EntityRepository(User)
-export class UserRepository extends Repository<User> {
-    public async findOneUserByField(field: keyof User, value: any): Promise<User> {
+@EntityRepository(Chat)
+export class ChatRepository extends Repository<Chat> {
+    public async findOneUserByField(field: keyof Chat, value: any): Promise<Chat> {
         const result = await this.createQueryBuilder()
             .where(`"${field as string}" = :value`, { value })
             .getOne();

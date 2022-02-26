@@ -1,9 +1,11 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
-import User from './user/entities/user.entity';
+import { User } from './user/entities/user.entity';
 import { GraphQLModule } from '@nestjs/graphql';
 import { GraphQLError, GraphQLFormattedError } from 'graphql';
 import { monoEnum } from 'mono-utils-core';
 import { config } from './core/config';
+import { Message } from './chat/entities/message.entity';
+import { Chat } from './chat/entities/chat.entity';
 
 export const dbModuleConfig = TypeOrmModule.forRoot({
     type: 'postgres',
@@ -14,7 +16,7 @@ export const dbModuleConfig = TypeOrmModule.forRoot({
     database: config.DB_NAME,
     synchronize: true,
     keepConnectionAlive: true,
-    entities: [User],
+    entities: [User, Message, Chat],
     extra: { connectionLimit: 1 },
 });
 
