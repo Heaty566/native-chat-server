@@ -6,7 +6,7 @@ import { JoiValidatorPipe } from '../core/utils/validator/validator.pipe';
 import { AuthService } from './auth.service';
 import { SignInDTO, vSignInDTO } from './dto/signinUserDto';
 import { SignUpDTO, vSignUpDTO } from './dto/signupUserDto';
-import User from 'src/user/entities/user.entity';
+import { User } from 'src/user/entities/user.entity';
 import { apiResponse } from 'src/core/interface/apiResponse';
 
 @Resolver()

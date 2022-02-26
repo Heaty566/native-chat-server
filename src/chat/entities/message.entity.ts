@@ -20,6 +20,8 @@ export class Message {
     @Column()
     userId: string;
 
+    chatId: string;
+
     constructor(userId: string, content: string) {
         this.createDate = new Date();
         this.userId = userId;

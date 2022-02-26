@@ -8,7 +8,7 @@ export class UserSchema {
     @Field(() => String, { defaultValue: '' })
     name: string;
 
-    @Field()
+    @Field(() => String)
     username: string;
 
     @Field(() => Date)

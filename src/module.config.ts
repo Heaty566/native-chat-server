@@ -24,15 +24,30 @@ export const graphQLModuleConfig = GraphQLModule.forRoot({
     autoSchemaFile: true,
     playground: config.NODE_ENV !== monoEnum.NODE_ENV_MODE.PRODUCTION,
     debug: false,
+    installSubscriptionHandlers: true,
     cors: {
         origin: config.CLIENT_URL,
         credentials: true,
     },
     path: '/api/graphql',
-    context: ({ req, res }) => ({
-        req,
-        res,
-    }),
+    subscriptions: {
+        'subscriptions-transport-ws': {
+            onConnect: (headers) => {
+                return {
+                    ws: {
+                        headers: headers,
+                    },
+                };
+            },
+        },
+    },
+    context: ({ req, res }) => {
+        return {
+            req,
+            res,
+        };
+    },
+
     formatError: (error: GraphQLError) => {
         const graphQLFormattedError: GraphQLFormattedError = {
             message: error?.extensions?.details,

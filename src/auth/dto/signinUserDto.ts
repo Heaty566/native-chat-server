@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
 import * as Joi from 'joi';
-import User from '../../user/entities/user.entity';
+import { User } from '../../user/entities/user.entity';
 import { userJoiSchema } from '../../core/utils/validator/schema/user.validator';
 import { ValidatorService } from '../../core/utils/validator/validator.service';
 

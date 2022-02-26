@@ -13,7 +13,7 @@ import { CustomLogger } from './core/utils/logger';
 export const NS_APP = 'app-info';
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule, { logger: new CustomLogger() });
+    const app = await NestFactory.create(AppModule, {});
     router(app);
 
     await app.listen(config.PORT, () => {

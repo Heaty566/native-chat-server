@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UserRepository } from './entities/user.repository';
 import { monoString } from 'mono-utils-core';
-import User from './entities/user.entity';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
