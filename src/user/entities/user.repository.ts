@@ -7,4 +7,9 @@ export class UserRepository extends Repository<User> {
         const result = await this.createQueryBuilder().where(`"${field}" = :value`, { value }).getOne();
         return result;
     }
+
+    public async getAllUser(value: string): Promise<User[]> {
+        const result = await this.createQueryBuilder().where(`"id" <> :value`, { value }).getMany();
+        return result;
+    }
 }

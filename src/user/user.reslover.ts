@@ -22,18 +22,11 @@ export class UserResolver {
         };
     }
 
-    // @UseGuards(UserGuard)
-    // @Query(() => [UserSchema])
-    // async getUsers(@Args('first') first: number): Promise<UserSchema[]> {
-    //     const users = await this.userService.getUsers(0, first);
+    @UseGuards(UserGuard)
+    @Query(() => [UserSchema])
+    async getUsers(@Context('req') req: Request): Promise<UserSchema[]> {
+        const users = await this.userService.getAllUser(req.user.id);
 
-    //     return users.map((user) => {
-    //         return {
-    //             name: user.name,
-    //             createDate: user.createDate,
-    //             email: user.email,
-    //             id: user.id,
-    //         };
-    //     });
-    // }
+        return users;
+    }
 }

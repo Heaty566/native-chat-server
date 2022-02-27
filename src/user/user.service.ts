@@ -11,6 +11,10 @@ export class UserService {
         return await this.userRepository.findOneUserByField(field, value);
     }
 
+    async getAllUser(userId: string) {
+        return await this.userRepository.getAllUser(userId);
+    }
+
     async getUsers(pageIndex: number, pageSize: number) {
         const query = await this.userRepository
             .createQueryBuilder()

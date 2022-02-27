@@ -26,13 +26,12 @@ export class ChatResolver {
         @Context('req') req: Request,
         @Args('input', new JoiValidatorPipe(vCreateChatDTO)) body: CreateChatDTO
     ) {
-        console.log('test');
         let chat = new Chat();
         chat.createDate = new Date();
         chat.id = [body.userId, req.user.id].sort().join('-');
         chat = await this.chatService.save(chat);
         this.pubSub.publish(`newChat`, chat);
-        return chat;
+        return chat.id;
     }
 
     @UseGuards(UserGuard)
