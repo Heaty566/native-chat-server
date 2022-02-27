@@ -14,7 +14,7 @@ import { config } from './config';
 export function router(app: INestApplication) {
     //common middleware
     app.use(cookieParser());
-    app.enableCors({ origin: config.CLIENT_URL, credentials: true });
+    app.enableCors({ origin: 'http://localhost:3000', credentials: true });
     app.setGlobalPrefix('/api');
 
     app.use((req: Request, res: Response, next: NextFunction) => {

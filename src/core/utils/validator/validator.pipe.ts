@@ -18,7 +18,7 @@ export class JoiValidatorPipe implements PipeTransform {
 
     mapJoiError(errors: ValidationError) {
         const errorObj = {};
-        for (const item of errors.details) errorObj[item.context.key] = { errorMessage: item.message };
+        for (const item of errors.details) errorObj[item.context.key] = item.message;
 
         return errorObj;
     }
